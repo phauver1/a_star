@@ -37,5 +37,6 @@ for c,col in enumerate(full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
-            container = st.container()
+            container = st.empty()
             container.button(full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(container,button_key))
+            help(container.empty)
