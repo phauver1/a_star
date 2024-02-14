@@ -8,8 +8,12 @@ full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_
 
 cols = st.columns(len(full_world_transposed[0]),gap='small')
 
+two_buttons = False
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
-            if st.button(full_world_transposed[c][r], key=next(widget_id)):
+            if st.button(full_world_transposed[c][r], key=next(widget_id)) and not two_buttons:
+                two_buttons = True
+            elif st.button(full_world_transposed[c][r], key=next(widget_id)) and two_buttons:
                 st.write(str(r)+str(c))
+                two_buttons = False
