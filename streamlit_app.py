@@ -2,7 +2,7 @@ import streamlit as st
 from a_star import *
 widget_id = (id for id in range(1, 100_00))
 
-cols = st.columns([20]*len(full_world[0]))
+cols = st.columns([1]*len(full_world[0]),gap='medium')
 
 for c,col in enumerate(cols):
     with col:
