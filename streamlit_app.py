@@ -1,6 +1,11 @@
 import streamlit as st
 from a_star import *
 
+id=0
+def get_new_id():
+    id += 1
+    yield id
+
 st.set_page_config(layout = 'wide')
 widget_id = (id for id in range(1, 100_00))
 
@@ -15,7 +20,7 @@ def click_button(container, button_key):
     if len(st.session_state.buttons_clicked) <= 1:
         st.session_state.buttons_clicked.append(container)
         container.empty()
-        container.button('h', on_click=click_button, args=(container,button_key))
+        container.button('h', key=get_new_id(), on_click=click_button, args=(container,button_key))
     else:
         st.session_state.buttons_clicked = [container]
 
@@ -26,5 +31,5 @@ for c,col in enumerate(full_world_transposed):
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
             container = st.container()
-            if container.button(full_world_transposed[c][r], on_click=click_button, args=(container,button_key)):
+            if container.button(full_world_transposed[c][r], key = get_new_id(), on_click=click_button, args=(container,button_key)):
                 print('1')
