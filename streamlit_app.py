@@ -6,7 +6,7 @@ widget_id = (id for id in range(1, 100_00))
 
 full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
 
-cols = st.columns(len(full_world_transposed[0]),gap='medium')
+cols = st.columns(len(full_world_transposed[0]),gap='small')
 
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
