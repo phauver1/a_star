@@ -19,7 +19,7 @@ two_buttons = False
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
-            button_key = float(str(r)+'.'+str(c))
+            button_key = str(r)+'.'+str(c)
             print(button_key)
             if st.button(full_world_transposed[c][r], key=button_key, on_click=click_button, args=(button_key,)):
                 print('1')
