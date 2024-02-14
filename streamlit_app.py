@@ -4,10 +4,12 @@ from a_star import *
 def get_new_id():
     id = 0
     while True:
-        yield id
         id += 1
+        yield id
 
-# print([get_new_id() for _ in range(100)])
+id_nums = get_new_id()
+
+print([next(id_nums) for _ in range(100)])
 
 st.set_page_config(layout = 'wide')
 widget_id = (id for id in range(1, 100_00))
@@ -23,7 +25,7 @@ def click_button(container, button_key):
     if len(st.session_state.buttons_clicked) <= 1:
         st.session_state.buttons_clicked.append(container)
         container.empty()
-        container.button('h', key=next(get_new_id), on_click=click_button, args=(container,button_key))
+        container.button('h', key=next(id_nums), on_click=click_button, args=(container,button_key))
     else:
         st.session_state.buttons_clicked = [container]
 
@@ -34,5 +36,5 @@ for c,col in enumerate(full_world_transposed):
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
             container = st.container()
-            if container.button(full_world_transposed[c][r], key = next(get_new_id), on_click=click_button, args=(container,button_key)):
+            if container.button(full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(container,button_key)):
                 print('1')
