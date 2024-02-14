@@ -1,10 +1,11 @@
 import streamlit as st
 from a_star import *
 
-id=0
 def get_new_id():
-    id += 1
-    yield id
+    id = 0
+    while True:
+        id +=1 
+        yield id
 
 st.set_page_config(layout = 'wide')
 widget_id = (id for id in range(1, 100_00))
