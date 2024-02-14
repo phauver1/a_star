@@ -12,15 +12,17 @@ if 'buttons_clicked' not in st.session_state:
     st.session_state.buttons_clicked = []
 
 def click_button(button_key):
-    if len(st.session_state.buttons_clicked) < 2:
+    if len(st.session_state.buttons_clicked) <= 1:
         st.session_state.buttons_clicked.append(button_key)
-        st.bu
+        print(st.session_state[button_key])
+    else:
+        st.session_state.buttons_clicked = [button_key]
 
-two_buttons = False
+
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
             print(button_key)
-            if st.checkbox(full_world_transposed[c][r], key=button_key, on_click=click_button, args=(button_key,)):
+            if st.button(full_world_transposed[c][r], key=button_key, on_click=click_button, args=(button_key,)):
                 print('1')
