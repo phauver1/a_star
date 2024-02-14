@@ -14,8 +14,6 @@ if 'clicked' not in st.session_state:
 def click_button():
     st.session_state.clicked = True
 
-st.button('Click me', on_click=click_button)
-
 
 two_buttons = False
 for c,col in enumerate(full_world_transposed):
