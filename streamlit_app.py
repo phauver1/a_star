@@ -23,13 +23,13 @@ if 'buttons_clicked' not in st.session_state:
 
 def click_button(container, button_key):
     if len(st.session_state.buttons_clicked) <= 1:
-        st.session_state.buttons_clicked.append(container)
-        container.empty()
-        container.button('h', key=next(id_nums), on_click=click_button, args=(container,button_key))
+        st.session_state.buttons_clicked.append(button_key)
+        # container.empty()
+        # container.button('h', key=next(id_nums), on_click=click_button, args=(container,button_key))
     else:
-        st.session_state.buttons_clicked = [container]
+        st.session_state.buttons_clicked = [button_key]
         container.empty()
-        container.button('a', key=next(id_nums), on_click=click_button, args=(container,button_key))
+        container.button('🎁', key=next(id_nums), on_click=click_button, args=(container,button_key))
 
 # help(st.button)
 
