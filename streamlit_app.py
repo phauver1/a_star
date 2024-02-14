@@ -14,10 +14,11 @@ if 'buttons_clicked' not in st.session_state:
 def click_button(button_key):
     if len(st.session_state.buttons_clicked) <= 1:
         st.session_state.buttons_clicked.append(button_key)
-        print(st.session_state[button_key])
+        st.session_state[button_key].label = 'h'
     else:
         st.session_state.buttons_clicked = [button_key]
 
+# help(st.button)
 
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
