@@ -15,7 +15,7 @@ def click_button(container, button_key):
     if len(st.session_state.buttons_clicked) <= 1:
         st.session_state.buttons_clicked.append(container)
         container.empty()
-        container.button(full_world_transposed[c][r], key=button_key, on_click=click_button, args=(container,button_key))
+        container.button('h', key=button_key, on_click=click_button, args=(container,button_key))
     else:
         st.session_state.buttons_clicked = [container]
 
