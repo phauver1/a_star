@@ -1,5 +1,7 @@
 import streamlit as st
 from a_star import *
+
+st.set_page_config(layout = 'wide')
 widget_id = (id for id in range(1, 100_00))
 
 full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
