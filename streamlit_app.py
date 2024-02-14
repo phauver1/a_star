@@ -8,16 +8,19 @@ full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_
 
 cols = st.columns(len(full_world_transposed[0]),gap='small')
 
-if 'clicked' not in st.session_state:
-    st.session_state.clicked = False
+if 'buttons_clicked' not in st.session_state:
+    st.session_state.buttons_clicked = []
 
-def click_button():
-    st.session_state.clicked = True
+def click_button(button_key):
+    if len(st.session_state.buttons_clicked) < 2:
+        st.session_state.buttons_clicked.append(button_key)
+
 
 
 two_buttons = False
 for c,col in enumerate(full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
-            if st.button(full_world_transposed[c][r], key=next(widget_id), on_click=click_button):
+            button_key = float(str(r)+'.'+str(c))
+            if st.button(full_world_transposed[c][r], key=button_key, on_click=click_button, args=(button_key,)):
                 print('1')
