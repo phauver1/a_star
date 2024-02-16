@@ -18,6 +18,7 @@ if 'full_world_transposed' not in st.session_state:
     st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
 
 def click_button(button_key):
+    r,c = [int(x) for x in button_key.split()]
     if len(st.session_state.buttons_clicked) == 0:
         st.session_state.buttons_clicked.append(button_key)
     if len(st.session_state.buttons_clicked) == 1:
