@@ -48,4 +48,4 @@ def click_button(r,c):
         # st.session_state.buttons_clicked = []
     return
 
-reset_buttons()
+reset_buttons(True)
