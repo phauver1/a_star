@@ -9,14 +9,20 @@ def get_new_id():
 
 id_nums = get_new_id()
 
-print([next(id_nums) for _ in range(100)])
-
 st.set_page_config(layout = 'wide')
 widget_id = (id for id in range(1, 100_00))
 
 if 'buttons_clicked' not in st.session_state:
     st.session_state.buttons_clicked = []
+print('full_world_transposed' in st.session_state)
+print('full_world_transposed' not in st.session_state)
+if 'full_world_transposed' not in st.session_state:
+    print('a')
+    st.session_state.asdf = []
+    print('buttons_clicked' in st.session_state)
     st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
+    print('full_world_transposed' in st.session_state)
+print(st.session_state.full_world_transposed)
 
 cols = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
 
