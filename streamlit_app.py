@@ -18,6 +18,7 @@ if 'full_world_transposed' not in st.session_state:
     st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
 
 def click_button(button_key):
+    return
     st.write(button_key)
     r,c = [int(x) for x in button_key.split('.')]
     if len(st.session_state.buttons_clicked) == 0:
@@ -35,4 +36,4 @@ for c,col in enumerate(st.session_state.full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
-            st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums))#, on_click=click_button, args=(button_key))
+            st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(button_key))
