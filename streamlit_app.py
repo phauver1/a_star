@@ -38,9 +38,9 @@ def click_button(r,c):
     elif len(st.session_state.buttons_clicked) == 1:
         ro,co = st.session_state.buttons_clicked[0]
         for move in a_star_search(full_world, (ro,co), (r,c), COSTS, MOVES, heuristic):
-            ro += move[0]
-            co += move[1]
-            st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index((move[1],move[0]))]
+            ro += move[1]
+            co += move[0]
+            st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index()]
         st.session_state.full_world_transposed[c][r] = '🎁'
         st.session_state.buttons_clicked = []
         reset_buttons()
