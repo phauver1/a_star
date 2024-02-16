@@ -60,8 +60,6 @@ def click_button(r,c):
             co += move[0]
             st.session_state.path_length += COSTS[st.session_state.full_world_transposed[co][ro]]
         st.session_state.full_world_transposed[c][r] = '🎁'
-        ro,co = st.session_state.buttons_clicked[0]
-        st.session_state.full_world_transposed[co][ro] = '⭐'
         st.session_state.buttons_clicked = []
     return
 
