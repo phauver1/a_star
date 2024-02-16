@@ -25,7 +25,7 @@ def click_button(r,c):
         ro,co = st.session_state.buttons_clicked[0]
         for move in a_star_search(full_world, (ro,co), (r,c), COSTS, MOVES, heuristic):
             ro += move[0]
-            co += move[0]
+            co += move[1]
             st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index(move)]
         st.session_state.full_world_transposed[c][r] = '🎁'
         # path_map[position[1]][position[0]] = move_icons[moves.index(move)]
