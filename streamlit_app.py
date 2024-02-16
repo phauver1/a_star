@@ -27,7 +27,7 @@ with st.sidebar:
     st.write("Path Cost: "+str(st.session_state.path_length))
     with st.expander('Terrain Costs:'):
         for tile in COSTS.keys():
-            COSTS[tile] = st.slider(tile,min_value=0,max_value=100,value=COSTS[tile])
+            COSTS[tile] = st.slider(tile,min_value=0,max_value=20,value=COSTS[tile])
         # st.slider('🐊',min_value=0,max_value=100,value=7)    #, '🐊', '🌾', '🌾', '⛰', '🌲')
 
 col_list = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
