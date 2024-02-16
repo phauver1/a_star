@@ -18,17 +18,15 @@ if 'full_world_transposed' not in st.session_state:
     st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
 
 def click_button(r,c):
-    return
-    st.write(button_key)
-    r,c = [int(x) for x in button_key.split('.')]
     if len(st.session_state.buttons_clicked) == 0:
-        st.session_state.buttons_clicked.append(button_key)
+        st.session_state.buttons_clicked.append((r,c))
     if len(st.session_state.buttons_clicked) == 1:
-        st.session_state.buttons_clicked.append(button_key)
+        st.session_state.buttons_clicked.append((r,c))
         st.session_state.full_world_transposed[c][r] = '🎁'
     else:
-        st.session_state.buttons_clicked = [button_key]
+        st.session_state.buttons_clicked = [(r,c)]
         st.session_state.full_world_transposed[c][r] = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
+    return
 
 cols = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
 
