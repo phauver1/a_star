@@ -28,10 +28,11 @@ def reset_buttons():
 
 def click_button(r,c):
     if len(st.session_state.buttons_clicked) == 0:
-        st.session_state.buttons_clicked.append((r,c))
+        # st.session_state.buttons_clicked.append((r,c))
         st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
         st.session_state.full_world_transposed[c][r] = '⭐'
         reset_buttons()
+        st.session_state.buttons_clicked.append((r,c))
     elif len(st.session_state.buttons_clicked) == 1:
         ro,co = st.session_state.buttons_clicked[0]
         for move in a_star_search(full_world, (ro,co), (r,c), COSTS, MOVES, heuristic):
@@ -40,8 +41,9 @@ def click_button(r,c):
             st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index((move[1],move[0]))]
         st.session_state.full_world_transposed[c][r] = '🎁'
         # path_map[position[1]][position[0]] = move_icons[moves.index(move)]
-        st.session_state.buttons_clicked = []
+        # st.session_state.buttons_clicked = []
         reset_buttons()
+        st.session_state.buttons_clicked = []
     return
 
 reset_buttons()
