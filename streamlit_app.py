@@ -20,7 +20,7 @@ if 'full_world_transposed' not in st.session_state:
 def click_button(r,c):
     if len(st.session_state.buttons_clicked) == 0:
         st.session_state.buttons_clicked.append((r,c))
-    if len(st.session_state.buttons_clicked) == 1:
+    elif len(st.session_state.buttons_clicked) == 1:
         st.session_state.buttons_clicked = []
         st.session_state.full_world_transposed[c][r] = '🎁'
     # else:
