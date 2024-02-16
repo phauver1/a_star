@@ -20,12 +20,14 @@ if 'full_world_transposed' not in st.session_state:
 def click_button(r,c):
     if len(st.session_state.buttons_clicked) == 0:
         st.session_state.buttons_clicked.append((r,c))
-    elif len(st.session_state.buttons_clicked) == 1:
-        st.session_state.buttons_clicked.append((r,c))
-        st.session_state.full_world_transposed[c][r] = '🎁'
-    else:
-        st.session_state.buttons_clicked = [(r,c)]
         st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
+    elif len(st.session_state.buttons_clicked) == 1:
+        for move in a_star_search(full_world, st.session_state.buttons_clicked[0], (r,c), COSTS, MOVES, heuristic):
+            r += move[0]
+            c += move[1]
+            st.session_state.full_world_transposed[c][r] = 'X'
+        st.session_state.full_world_transposed[c][r] = '🎁'
+        st.session_state.buttons_clicked = []
     return
 
 cols = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
