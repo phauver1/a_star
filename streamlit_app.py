@@ -16,13 +16,14 @@ if 'buttons_clicked' not in st.session_state:
     st.session_state.buttons_clicked = []
 if 'full_world_transposed' not in st.session_state:
     st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
+if 'col_list' not in st.session_state:
+    st.session_state.col_list = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
 
 st.write("Usage: Click the start position, pause for the map to reload, then click the destination.")
 
 def reset_buttons():
-    cols = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
     for c,col in enumerate(st.session_state.full_world_transposed):
-        with cols[c]:
+        with st.session_state.col_list[c]:
             for r,element in enumerate(col):
                 st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(r,c))
     return
