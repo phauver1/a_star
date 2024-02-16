@@ -24,7 +24,7 @@ if 'path_length' not in st.session_state:
 with st.sidebar:
     st.title('A* Algorithm')
     st.write("Usage: Click the start position, pause for the map to reload, then click the destination.")
-    st.write("Path Length: "+str(st.session_state.path_length))
+    st.write("Path Cost: "+str(st.session_state.path_length))
 
 col_list = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
 
