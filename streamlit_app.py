@@ -22,7 +22,8 @@ def click_button(r,c):
         st.session_state.buttons_clicked.append((r,c))
         st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
     elif len(st.session_state.buttons_clicked) == 1:
-        for move in a_star_search(full_world, st.session_state.buttons_clicked[0], (r,c), COSTS, MOVES, heuristic):
+        ro,co = st.session_state.buttons_clicked[0]
+        for move in a_star_search(full_world, (ro,co), (r,c), COSTS, MOVES, heuristic):
             ro += move[0]
             co += move[0]
             st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index(move)]
