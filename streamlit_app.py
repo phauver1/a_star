@@ -21,12 +21,13 @@ st.write("Usage: Click the start position twice, then the destination twice, pau
 
 cols = st.columns(len(st.session_state.full_world_transposed[0]),gap='small')
 
-def reset_buttons(click):
+def reset_buttons():
     for c,col in enumerate(st.session_state.full_world_transposed):
         with cols[c]:
             for r,element in enumerate(col):
-                if click and st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums)):
-                    click_button(r,c)
+                st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(r,c))
+                # if st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums)):
+                #     click_button(r,c)
     return
 
 def click_button(r,c):
@@ -34,7 +35,7 @@ def click_button(r,c):
         st.session_state.buttons_clicked.append((r,c))
         st.session_state.full_world_transposed = [[row[i] for row in full_world] for i in range(len(full_world[0]))]
         st.session_state.full_world_transposed[c][r] = '⭐'
-        reset_buttons(False)
+        reset_buttons()
         # st.session_state.buttons_clicked.append((r,c))
     elif len(st.session_state.buttons_clicked) == 1:
         ro,co = st.session_state.buttons_clicked[0]
@@ -44,8 +45,8 @@ def click_button(r,c):
             st.session_state.full_world_transposed[co][ro] = MOVE_ICONS[MOVES.index(move)]
         st.session_state.full_world_transposed[c][r] = '🎁'
         st.session_state.buttons_clicked = []
-        reset_buttons(True)
+        reset_buttons()
         # st.session_state.buttons_clicked = []
     return
 
-reset_buttons(True)
+reset_buttons()
