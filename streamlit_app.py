@@ -35,4 +35,4 @@ for c,col in enumerate(st.session_state.full_world_transposed):
     with cols[c]:
         for r,element in enumerate(col):
             button_key = str(r)+'.'+str(c)
-            st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums), on_click=click_button, args=(button_key))
+            st.button(st.session_state.full_world_transposed[c][r], key = next(id_nums))#, on_click=click_button, args=(button_key))
